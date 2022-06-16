@@ -35,34 +35,34 @@ export class AppService {
   }
 
   getRepo(params: { user: string; repo: string }): any {
-    const { user, repo } = params; 
+    const { user, repo } = params;
     return this.http(`${this.url}/repos/${user}/${repo}`).pipe(
       map((
-    data) => ({
-        ...this.data[params.user], 
-        data,
-      }))
-      );
-    }
+        data) => ({
+          ...this.data[params.user],
+          data,
+        }))
+    );
+  }
 
-      getRepoData(params: { user: string; repo: string; search: string }): any {
+  getRepoData(params: { user: string; repo: string; search: string }): any {
     const { user, repo, search } = params;
     return this.http(`${this.url}/repos/${user}/${repo}/${search}`).pipe(
-    map((data) => ({
+      map((data) => ({
         ...this.data[params.user],
         data,
       }))
-    ); 
-  
-}
-  
+    );
+
+  }
+
   getUser(params: { user: string }): any {
-const { user } = params;
-return this.http(`${this.url}/users/${user}`).pipe(
+    const { user } = params;
+    return this.http(`${this.url}/users/${user}`).pipe(
       map((data) => ({
         ...this.data[params.user],
-      data,
-}))
+        data,
+      }))
     );
   }
 }
