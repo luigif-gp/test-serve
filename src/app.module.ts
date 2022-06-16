@@ -1,7 +1,11 @@
+import { HttpModule } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
-import { GithubModule } from './github/github.module';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 
 @Module({
-  imports: [GithubModule],
+  imports: [HttpModule],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule { }
