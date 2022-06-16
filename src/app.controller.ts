@@ -18,7 +18,7 @@ export class AppController {
   //   return this.appService.getUser(params);
   // }
   @Get(':user/:repo/:search')
-  getRepoData(@Param() params): string {
+  getRepoData(@Param() params) {
     return this.appService.getRepoData(params);
   }
 }
