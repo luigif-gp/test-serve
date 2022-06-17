@@ -67,17 +67,5 @@ export class AppService {
           date: d.commit.author.date
         }))))
     );
-
-  }
-
-  getUser(params: { user: string }): any {
-    const { user } = params;
-    return this.http(`${this.url}/users/${user}`).pipe(
-      map((response) => response.data),
-      map((data) => ({
-        ...this.data[params.user],
-        data,
-      }))
-    );
   }
 }
