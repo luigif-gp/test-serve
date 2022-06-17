@@ -8,6 +8,6 @@ async function bootstrap() {
     origin: `${process.env.ALLOW_ORIGIN}`,
     credentials: true,
   });
-  await app.listen(parseInt(process.env.PORT) || 4000);
+  await app.listen(process.env.PORT || 4000);
 }
 bootstrap();
