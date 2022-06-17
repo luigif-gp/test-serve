@@ -29,10 +29,16 @@ export class AppService {
     const { user } = params;
     return this.http(`${this.url}/users/${user}/repos`).pipe(
       map((response) => response.data),
-      map((data) => ({
-        ...this.data[params.user],
-        data,
-      }))
+      map((data) => (
+        data.map(d => ({
+          name: d.name,
+          owner: d.owner,
+          fullName: d.full_name,
+          url: d.html_url,
+          created: d.created_at,
+          updated: d.update_at,
+          size: d.size
+        }))))
     );
   }
 
@@ -40,11 +46,10 @@ export class AppService {
     const { user, repo } = params;
     return this.http(`${this.url}/repos/${user}/${repo}`).pipe(
       map((response) => response.data),
-      map((
-        data) => ({
-          ...this.data[params.user],
-          data,
-        }))
+      map((data) => (
+        data.map(d => ({
+          name: d.name
+        }))))
     );
   }
 
@@ -54,9 +59,12 @@ export class AppService {
       map((response) => response.data),
       map((data) => (
         data.map(d => ({
-          car: d.commit.committer,
+          committer: d.commit.committer,
           message: d.commit.message,
           tree: d.commit.tree,
+          url: d.html_url,
+          user: d.committer.login,
+          date: d.commit.author.date
         }))))
     );
 
