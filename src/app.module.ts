@@ -1,7 +1,20 @@
+import { HttpModule } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
-import { GithubModule } from './github/github.module';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { ConfigModule } from '@nestjs/config';
+import { AuthModule } from './auth/auth.module';
+
 
 @Module({
-  imports: [GithubModule],
+  imports: [
+    ConfigModule.forRoot({
+      envFilePath: '.env',
+      isGlobal: true,
+    }),
+    HttpModule, AuthModule],
+  controllers: [AppController],
+  providers: [AppService],
+
 })
 export class AppModule { }
