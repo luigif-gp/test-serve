@@ -28,16 +28,11 @@ please remember to remove `<PORT>` for the port of your choice.
 
 We also have a live production of this project but required a `api-key` to have access.
 
-$ link: https://nestservertest.herokuapp.com/
+## link: https://nestservertest.herokuapp.com/
 
 #How to run without Docker
 
 (only if we also wish to run our server on local)
-we need to change this environment variable to a localhost i.e. `http://localhost:4000/`:
-
-```bash
-REACT_APP_API=
-```
 
 $Use following command with node -v 14.18.0:
 
